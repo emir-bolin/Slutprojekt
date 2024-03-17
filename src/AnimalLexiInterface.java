@@ -24,13 +24,13 @@ public class AnimalLexiInterface {
 
             switch (choice) {
                 case 1:
-                    displayAnimals();
+                    displayAnimals(animals);
                     break;
                 case 2:
                     //searchAnimals(scanner);
                     break;
                 case 3:
-                    //sortAnimals();
+                    sortAnimals();
                     break;
                 case 4:
                     running = false;
@@ -106,11 +106,27 @@ public class AnimalLexiInterface {
         animals.add(new Amphibian("Common Toad", 12, "Croak", "Land", "Skin", "Lungs/Skin", false, false));
 
     }
-    private static void displayAnimals() {
+    private static void displayAnimals(List<Animal> animals) {
         System.out.println("All Animals:");
         for (Animal animal : animals) {
             System.out.println(animal.getName() + ", Type: " + animal.getClass().getSimpleName() +
-                    ", Habitat: " + animal.getHabitat() + ", Lifetime: " + animal.getLifetime() + " years, Blood-type: "+animal.getBloodType());
+                    ", Habitat: " + animal.getHabitat() + ", Lifetime: " + animal.getLifetime() + " years, Blood-type: "+animal.getBloodType()); // Todo: displayAnimal(animal)
         }
+    }
+
+    private static void sortAnimals(){
+        List<Animal> lifetimeArrayList = animals;
+        int n = lifetimeArrayList.size();
+
+        for (int i = 0; i < n - 1; i++){
+            for (int j = 0; j < n - i - 1; j++){
+                if (lifetimeArrayList.get(j).getLifetime() > lifetimeArrayList.get(j + 1).getLifetime()){
+                    Animal temporaryAnimal = lifetimeArrayList.get(j);
+                    lifetimeArrayList.set(j, lifetimeArrayList.get(j + 1));
+                    lifetimeArrayList.set(j + 1, temporaryAnimal);
+                }
+            }
+        }
+        displayAnimals(lifetimeArrayList); // Todo: make it possible to invert arraylist
     }
 }

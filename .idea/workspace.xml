@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="A menu was added in order to interact with AnimalLexi. A few test animals were also added.">
+    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="50 test animals were added to the code. Also, a function for displaying all the animals was added.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnimalLexiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnimalLexiInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710577769501</updated>
-      <workItem from="1710577770483" duration="16358000" />
+      <workItem from="1710577770483" duration="21704000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -101,7 +100,14 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1710676407967</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="50 test animals were added to the code. Also, a function for displaying all the animals was added.">
+      <option name="closed" value="true" />
+      <created>1710681347490</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1710681347490</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +118,7 @@
     <MESSAGE value="Different types of animal classes were created" />
     <MESSAGE value="Attributes such as canSwim and canFly were added to the classes." />
     <MESSAGE value="A menu was added in order to interact with AnimalLexi. A few test animals were also added." />
-    <option name="LAST_COMMIT_MESSAGE" value="A menu was added in order to interact with AnimalLexi. A few test animals were also added." />
+    <MESSAGE value="50 test animals were added to the code. Also, a function for displaying all the animals was added." />
+    <option name="LAST_COMMIT_MESSAGE" value="50 test animals were added to the code. Also, a function for displaying all the animals was added." />
   </component>
 </project>
