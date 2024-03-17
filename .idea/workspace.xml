@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="Different types of animal classes were created">
+    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="Attributes such as canSwim and canFly were added to the classes.">
       <change afterPath="$PROJECT_DIR$/src/AnimalLexiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Amphibian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Amphibian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Coldblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Coldblooded.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mammal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mammal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reptile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reptile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warmblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warmblooded.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710577769501</updated>
-      <workItem from="1710577770483" duration="10258000" />
+      <workItem from="1710577770483" duration="10815000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -95,7 +86,14 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1710581763437</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Attributes such as canSwim and canFly were added to the classes.">
+      <option name="closed" value="true" />
+      <created>1710607206465</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1710607206465</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +102,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Different types of animal classes were created" />
-    <option name="LAST_COMMIT_MESSAGE" value="Different types of animal classes were created" />
+    <MESSAGE value="Attributes such as canSwim and canFly were added to the classes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Attributes such as canSwim and canFly were added to the classes." />
   </component>
 </project>

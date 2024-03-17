@@ -1,7 +1,7 @@
 public abstract class Animal {
     // Attributes
     private String name;
-    private int lifetime;
+    private int lifetime; // Expected lifetime in years
     private String sound;
     private String habitat;
     private String skin;
