@@ -8,6 +8,8 @@ public abstract class Animal {
     private String breathing;
     private boolean canSwim = false;
     private boolean canFly = false;
+    // Todo: add attribute amountOfLegs
+
     // Constructor
     public Animal(String name, int lifetime, String sound, String habitat, String skin, String breathing, boolean canSwim, boolean canFly) {
         this.name = name;
