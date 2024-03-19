@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="50 test animals were added to the code. Also, a function for displaying all the animals was added.">
+    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="The sortAnimals function was created which can sort animals on lifetime from youngest to oldest. Also, the displayAnimals function got an input parameter.">
+      <change afterPath="$PROJECT_DIR$/src/Zookeeper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Amphibian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Amphibian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnimalLexiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnimalLexiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bird.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Coldblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Coldblooded.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mammal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mammal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reptile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reptile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Warmblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warmblooded.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710577769501</updated>
-      <workItem from="1710577770483" duration="21704000" />
+      <workItem from="1710577770483" duration="29458000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -107,7 +116,14 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1710681347490</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="The sortAnimals function was created which can sort animals on lifetime from youngest to oldest. Also, the displayAnimals function got an input parameter.">
+      <option name="closed" value="true" />
+      <created>1710698701886</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1710698701886</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +135,7 @@
     <MESSAGE value="Attributes such as canSwim and canFly were added to the classes." />
     <MESSAGE value="A menu was added in order to interact with AnimalLexi. A few test animals were also added." />
     <MESSAGE value="50 test animals were added to the code. Also, a function for displaying all the animals was added." />
-    <option name="LAST_COMMIT_MESSAGE" value="50 test animals were added to the code. Also, a function for displaying all the animals was added." />
+    <MESSAGE value="The sortAnimals function was created which can sort animals on lifetime from youngest to oldest. Also, the displayAnimals function got an input parameter." />
+    <option name="LAST_COMMIT_MESSAGE" value="The sortAnimals function was created which can sort animals on lifetime from youngest to oldest. Also, the displayAnimals function got an input parameter." />
   </component>
 </project>

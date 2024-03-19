@@ -8,10 +8,11 @@ public abstract class Animal {
     private String breathing;
     private boolean canSwim = false;
     private boolean canFly = false;
-    // Todo: add attribute amountOfLegs
+
+    private String feedingTme;
 
     // Constructor
-    public Animal(String name, int lifetime, String sound, String habitat, String skin, String breathing, boolean canSwim, boolean canFly) {
+    public Animal(String name, int lifetime, String sound, String habitat, String skin, String breathing, boolean canSwim, boolean canFly, String feedingTme) {
         this.name = name;
         this.lifetime = lifetime;
         this.sound = sound;
@@ -20,6 +21,7 @@ public abstract class Animal {
         this.breathing = breathing;
         this.canFly =canFly;
         this.canSwim = canSwim;
+        this.feedingTme = feedingTme;
     }
 
     // Methods

@@ -46,66 +46,67 @@ public class AnimalLexiInterface {
     // Methods
     private static void initializeAnimals() { // Todo: go through the animals
         // Mammals
-        animals.add(new Mammal("Lion", 14, "Roar", "Land", "Fur", "Lungs", false, false));
-        animals.add(new Mammal("Tiger", 12, "Roar", "Land", "Fur", "Lungs", false, false));
-        animals.add(new Mammal("Elephant", 70, "Trumpet", "Land", "Skin", "Lungs", false, false));
-        animals.add(new Mammal("Rhinoceros", 40, "Grunt", "Land", "Skin", "Lungs", false, false));
-        animals.add(new Mammal("Giraffe", 25, "Hum", "Land", "Fur", "Lungs", false, false));
-        animals.add(new Mammal("Zebra", 20, "Whinny", "Land", "Fur", "Lungs", false, false));
-        animals.add(new Mammal("Kangaroo", 23, "Grunt", "Land", "Fur", "Lungs", false, false));
-        animals.add(new Mammal("Panda", 20, "Bleat", "Land", "Fur", "Lungs", false, false));
-        animals.add(new Mammal("Wolf", 16, "Howl", "Land", "Fur", "Lungs", false, false));
-        animals.add(new Mammal("Fox", 14, "Bark", "Land", "Fur", "Lungs", false, false));
+        animals.add(new Mammal("Lion", 14, "Roar", "Land", "Fur", "Lungs", false, false, "08:00"));
+        animals.add(new Mammal("Tiger", 12, "Roar", "Land", "Fur", "Lungs", false, false, "09:00"));
+        animals.add(new Mammal("Elephant", 70, "Trumpet", "Land", "Skin", "Lungs", false, false, "10:00"));
+        animals.add(new Mammal("Giraffe", 25, "Hum", "Land", "Fur", "Lungs", false, false, "11:00"));
+        animals.add(new Mammal("Zebra", 20, "Whinny", "Land", "Fur", "Lungs", false, false, "07:00"));
+        animals.add(new Mammal("Panda", 20, "Bleat", "Forest", "Fur", "Lungs", false, false, "01:00"));
+        animals.add(new Mammal("Kangaroo", 22, "Chortle", "Land", "Fur", "Lungs", false, false, "02:00"));
+        animals.add(new Mammal("Wolf", 16, "Howl", "Land", "Fur", "Lungs", false, false, "03:00"));
+        animals.add(new Mammal("Bear", 20, "Growl", "Land", "Fur", "Lungs", false, false, "04:00"));
+        animals.add(new Mammal("Rhinoceros", 40, "Grunt", "Land", "Skin", "Lungs", false, false, "05:00"));
 
-            // Birds
-        animals.add(new Bird("Eagle", 20, "Screech", "Air", "Feathers", "Lungs"));
-        animals.add(new Bird("Parrot", 50, "Talk", "Air", "Feathers", "Lungs"));
-        animals.add(new Bird("Owl", 25, "Hoot", "Air", "Feathers", "Lungs"));
-        animals.add(new Bird("Penguin", 20, "Honk", "Land/Water", "Feathers", "Lungs"));
-        animals.add(new Bird("Flamingo", 30, "Squawk", "Land/Water", "Feathers", "Lungs"));
-        animals.add(new Bird("Swan", 24, "Hiss", "Water", "Feathers", "Lungs"));
-        animals.add(new Bird("Peacock", 20, "Call", "Land", "Feathers", "Lungs"));
-        animals.add(new Bird("Hummingbird", 5, "Chirp", "Air", "Feathers", "Lungs"));
-        animals.add(new Bird("Crow", 14, "Caw", "Air", "Feathers", "Lungs"));
-        animals.add(new Bird("Sparrow", 3, "Tweet", "Air", "Feathers", "Lungs"));
+        // Birds
+        animals.add(new Bird("Eagle", 20, "Screech", "Air", "Feathers", "Lungs", "18:00"));
+        animals.add(new Bird("Parrot", 50, "Talk", "Air", "Feathers", "Lungs", "19:00"));
+        animals.add(new Bird("Owl", 25, "Hoot", "Air", "Feathers", "Lungs", "20:00"));
+        animals.add(new Bird("Penguin", 20, "Honk", "Land/Water", "Feathers", "Lungs", "21:00"));
+        animals.add(new Bird("Flamingo", 30, "Squawk", "Land/Water", "Feathers", "Lungs", "22:00"));
+        animals.add(new Bird("Sparrow", 3, "Chirp", "Air", "Feathers", "Lungs", "21:00"));
+        animals.add(new Bird("Peacock", 20, "Call", "Land", "Feathers", "Lungs", "12:00"));
+        animals.add(new Bird("Hummingbird", 5, "Chirp", "Air", "Feathers", "Lungs", "13:00"));
+        animals.add(new Bird("Canary", 10, "Sing", "Air", "Feathers", "Lungs", "14:00"));
+        animals.add(new Bird("Crow", 14, "Caw", "Air", "Feathers", "Lungs", "15:00"));
 
         // Fish
-        animals.add(new Fish("Salmon", 5, "Blub", "Water", "Scales", "Gills"));
-        animals.add(new Fish("Clownfish", 10, "Silent", "Water", "Scales", "Gills"));
-        animals.add(new Fish("Shark", 30, "Silent", "Water", "Scales", "Gills"));
-        animals.add(new Fish("Tuna", 20, "Silent", "Water", "Scales", "Gills"));
-        animals.add(new Fish("Goldfish", 10, "Silent", "Water", "Scales", "Gills"));
-        animals.add(new Fish("Betta", 3, "Silent", "Water", "Scales", "Gills"));
-        animals.add(new Fish("Carp", 20, "Silent", "Water", "Scales", "Gills"));
-        animals.add(new Fish("Catfish", 15, "Silent", "Water", "Scales", "Gills"));
-        animals.add(new Fish("Guppy", 2, "Silent", "Water", "Scales", "Gills"));
-        animals.add(new Fish("Manta Ray", 20, "Silent", "Water", "Scales", "Gills"));
+        animals.add(new Fish("Salmon", 5, "Blub", "Water", "Scales", "Gills", "16:00"));
+        animals.add(new Fish("Clownfish", 10, "Silent", "Coral Reef", "Scales", "Gills", "16:30"));
+        animals.add(new Fish("Goldfish", 10, "Silent", "Freshwater Pond", "Scales", "Gills", "17:00"));
+        animals.add(new Fish("Shark", 30, "Silent", "Ocean", "Scales", "Gills", "17:30"));
+        animals.add(new Fish("Tuna", 15, "Silent", "Open Sea", "Scales", "Gills", "18:00"));
+        animals.add(new Fish("Manta Ray", 20, "Silent", "Tropical Waters", "Scales", "Gills", "18:30"));
+        animals.add(new Fish("Swordfish", 15, "Silent", "Ocean", "Scales", "Gills", "19:00"));
+        animals.add(new Fish("Pufferfish", 10, "Silent", "Tropical Sea", "Scales", "Gills", "19:30"));
+        animals.add(new Fish("Catfish", 20, "Silent", "Freshwater", "Scales", "Gills", "20:00"));
+        animals.add(new Fish("Koi", 35, "Silent", "Pond", "Scales", "Gills", "20:30"));
 
         // Reptiles
-        animals.add(new Reptile("Crocodile", 70, "Growl", "Water/Land", "Scales", "Lungs", true, false));
-        animals.add(new Reptile("Snake", 9, "Hiss", "Land", "Scales", "Lungs", false, false));
-        animals.add(new Reptile("Turtle", 100, "Silent", "Water/Land", "Scales", "Lungs", true, false));
-        animals.add(new Reptile("Lizard", 10, "Silent", "Land", "Scales", "Lungs", false, false));
-        animals.add(new Reptile("Chameleon", 5, "Silent", "Land", "Scales", "Lungs", false, false));
-        animals.add(new Reptile("Iguana", 12, "Silent", "Land", "Scales", "Lungs", false, false));
-        animals.add(new Reptile("Gecko", 6, "Silent", "Land", "Scales", "Lungs", false, false));
-        animals.add(new Reptile("Komodo Dragon", 30, "Hiss", "Land", "Scales", "Lungs", false, false));
-        animals.add(new Reptile("Alligator", 50, "Growl", "Water/Land", "Scales", "Lungs", true, false));
-        animals.add(new Reptile("Anaconda", 10, "Hiss", "Water", "Scales", "Lungs", true, false));
+        animals.add(new Reptile("Crocodile", 70, "Growl", "Water/Land", "Scales", "Lungs", true, false, "09:00"));
+        animals.add(new Reptile("Snake", 9, "Hiss", "Land", "Scales", "Lungs", false, false, "09:30"));
+        animals.add(new Reptile("Turtle", 100, "Silent", "Water/Land", "Scales", "Lungs", true, false, "10:00"));
+        animals.add(new Reptile("Lizard", 10, "Silent", "Land", "Scales", "Lungs", false, false, "10:30"));
+        animals.add(new Reptile("Chameleon", 5, "Silent", "Trees", "Scales", "Lungs", false, false, "11:00"));
+        animals.add(new Reptile("Iguana", 12, "Silent", "Land/Trees", "Scales", "Lungs", false, false, "11:30"));
+        animals.add(new Reptile("Gecko", 6, "Silent", "Houses/Trees", "Scales", "Lungs", false, false, "12:00 "));
+        animals.add(new Reptile("Komodo Dragon", 30, "Hiss", "Land", "Scales", "Lungs", false, false, "13:30"));
+        animals.add(new Reptile("Alligator", 50, "Growl", "Water/Land", "Scales", "Lungs", true, false, "13:00"));
+        animals.add(new Reptile("Anaconda", 10, "Hiss", "Water", "Scales", "Lungs", true, false, "13:30"));
 
         // Amphibians
-        animals.add(new Amphibian("Frog", 7, "Croak", "Water/Land", "Skin", "Lungs/Skin", true, false));
-        animals.add(new Amphibian("Toad", 5, "Croak", "Land", "Skin", "Lungs/Skin", false, false));
-        animals.add(new Amphibian("Salamander", 6, "Silent", "Water/Land", "Skin", "Lungs/Skin", true, false));
-        animals.add(new Amphibian("Newt", 5, "Silent", "Water", "Skin", "Lungs/Skin", true, false));
-        animals.add(new Amphibian("Axolotl", 10, "Silent", "Water", "Skin", "Gills", true, false));
-        animals.add(new Amphibian("Tree Frog", 5, "Croak", "Land", "Skin", "Lungs/Skin", false, true));
-        animals.add(new Amphibian("Bullfrog", 8, "Deep Croak", "Water/Land", "Skin", "Lungs/Skin", true, false));
-        animals.add(new Amphibian("Red-Eyed Tree Frog", 5, "Croak", "Trees", "Skin", "Lungs/Skin", false, true));
-        animals.add(new Amphibian("Poison Dart Frog", 7, "Silent", "Land", "Skin", "Lungs/Skin", false, false));
-        animals.add(new Amphibian("Common Toad", 12, "Croak", "Land", "Skin", "Lungs/Skin", false, false));
+        animals.add(new Amphibian("Frog", 7, "Croak", "Water/Land", "Skin", "Lungs/Skin", true, false, "14:00"));
+        animals.add(new Amphibian("Toad", 5, "Croak", "Land", "Skin", "Lungs/Skin", false, false, "14:30"));
+        animals.add(new Amphibian("Salamander", 6, "Silent", "Water/Land", "Skin", "Lungs/Skin", true, false, "15:00"));
+        animals.add(new Amphibian("Newt", 5, "Silent", "Water", "Skin", "Lungs/Skin", true, false, "15:30"));
+        animals.add(new Amphibian("Axolotl", 10, "Silent", "Freshwater", "Skin", "Gills", true, false, "16:00"));
+        animals.add(new Amphibian("Tree Frog", 5, "Croak", "Trees", "Skin", "Lungs/Skin", false, true, "16:30"));
+        animals.add(new Amphibian("Bullfrog", 8, "Deep Croak", "Water/Land", "Skin", "Lungs/Skin", true, false, "17:00"));
+        animals.add(new Amphibian("Red-Eyed Tree Frog", 5, "Croak", "Rainforest", "Skin", "Lungs/Skin", false, true, "17:30"));
+        animals.add(new Amphibian("Poison Dart Frog", 7, "Silent", "Rainforest", "Skin", "Lungs/Skin", false, false, "18:00"));
+        animals.add(new Amphibian("Common Toad", 12, "Croak", "Gardens/Forests", "Skin", "Lungs/Skin", false, false, "18:30"));
 
     }
+
     private static void displayAnimals(List<Animal> animals) {
         System.out.println("All Animals:");
         for (Animal animal : animals) {
@@ -116,7 +117,7 @@ public class AnimalLexiInterface {
 
     private static void sortAnimals(){
         List<Animal> lifetimeArrayList = animals;
-        int n = lifetimeArrayList.size();
+        int n = lifetimeArrayList.size(); // Todo: find better variable name
 
         for (int i = 0; i < n - 1; i++){
             for (int j = 0; j < n - i - 1; j++){
