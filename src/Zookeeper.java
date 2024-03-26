@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Zookeeper {
     private String name;
-    private List<Animal> assignedAnimals;
+    private ArrayList<Animal> assignedAnimals;
 
     public Zookeeper(String name) {
         this.name = name;
@@ -14,7 +13,7 @@ public class Zookeeper {
         this.assignedAnimals.add(animal);
     }
 
-    public List<Animal> getAssignedAnimals() {
+    public ArrayList<Animal> getAssignedAnimals() {
         return assignedAnimals;
     }
 

@@ -8,11 +8,11 @@ public abstract class Animal {
     private String breathing;
     private boolean canSwim = false;
     private boolean canFly = false;
-
     private String feedingTme;
+    private Zookeeper zookeeper;
 
     // Constructor
-    public Animal(String name, int lifetime, String sound, String habitat, String skin, String breathing, boolean canSwim, boolean canFly, String feedingTme) {
+    public Animal(String name, int lifetime, String sound, String habitat, String skin, String breathing, boolean canSwim, boolean canFly, String feedingTme, Zookeeper zookeeper) {
         this.name = name;
         this.lifetime = lifetime;
         this.sound = sound;
@@ -22,6 +22,7 @@ public abstract class Animal {
         this.canFly =canFly;
         this.canSwim = canSwim;
         this.feedingTme = feedingTme;
+        this.zookeeper = zookeeper;
     }
 
     // Methods
