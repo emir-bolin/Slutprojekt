@@ -3,54 +3,23 @@ import java.util.ArrayList;
 public class AnimalLexiInterface {
     // Attributes
     private static ArrayList<Animal> animals = new ArrayList<>();
-    private static ArrayList<Zookeeper> zookeepers = new ArrayList<Zookeeper>();
+    private static ArrayList<Zookeeper> zookeepers = new ArrayList<>();
+    private static Zookeeper currentZookeeper;
 
     // Constructor
     public AnimalLexiInterface() {
         initializeZookeepers();
         initializeAnimals();
-        Scanner scanner = new Scanner(System.in);
-        boolean running = true;
-
-        while (running) {
-            System.out.println("\nType a number from 1 to 4");
-            System.out.println("[1] View All Animals");
-            System.out.println("[2] Search Animals");
-            System.out.println("[3] Sort Animals");
-            System.out.println("[4] Sign out");
-            System.out.print("Choose an option: ");
-
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
-
-            switch (choice) {
-                case 1:
-                    displayAnimals(animals);
-                    break;
-                case 2:
-                    //searchAnimals(scanner);
-                    break;
-                case 3:
-                    sortAnimals();
-                    break;
-                case 4:
-                    running = false;
-                    System.out.println("Signing out.");
-                    break;
-                default:
-                    System.out.println("Invalid option. Please try again.");
-            }
-        }
-        scanner.close();
+        logInMenu();
     }
 
     // Methods
     private static void initializeZookeepers(){
-        zookeepers.add(new Zookeeper("Emir"));
-        zookeepers.add(new Zookeeper("Liv"));
-        zookeepers.add(new Zookeeper("Yusuf"));
-        zookeepers.add(new Zookeeper("Lukas"));
-        zookeepers.add(new Zookeeper("Arda"));
+        zookeepers.add(new Zookeeper("Emir", "123"));
+        zookeepers.add(new Zookeeper("Liv", "123"));
+        zookeepers.add(new Zookeeper("Yusuf", "123"));
+        zookeepers.add(new Zookeeper("Lukas", "123"));
+        zookeepers.add(new Zookeeper("Arda", "123"));
 
     }
     private static void initializeAnimals() { // Todo: go through the animals
@@ -115,11 +84,102 @@ public class AnimalLexiInterface {
         animals.add(new Amphibian("Common Toad", 12, "Croak", "Gardens/Forests", "Skin", "Lungs/Skin", false, false, "18:30", zookeepers.get(4)));
     }
 
+    private static boolean findWord(String word, boolean isPassword){ //Todo: find better name
+        for (Zookeeper zookeeper : zookeepers) {
+            if (isPassword) {
+                if (zookeeper.checkPassword(word)) {
+                    return true;
+                }
+
+            } else {
+                if (zookeeper.getName().equals(word)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static Zookeeper getZookeeperByName(String name){
+        for (Zookeeper zookeeper : zookeepers) {
+            if (zookeeper.getName().equals(name)) {
+                return zookeeper;
+            }
+        }
+        return null;
+    }
+
+    private static void logInMenu(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to AnimalLexi!");
+
+        System.out.print("State your name.\nName: ");
+        String name = scanner.nextLine();
+        boolean correctName = findWord(name, false);
+
+        System.out.print("State your password.\nPassword: ");
+        String password = scanner.nextLine();
+        boolean correctPassword = findWord(password, true);
+
+        if (correctName && correctPassword){
+            currentZookeeper = getZookeeperByName(name);
+            myMenu();
+        }
+        else {
+            System.out.println("Name or password is wrong, please try again."); // For security reasons it is not directly reviled what is wrong
+            logInMenu(); // Recursive call
+        }
+    }
+
+    private static void myMenu(){
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\nType a number from 1 to 5");
+            System.out.println("[1] View animals");
+            System.out.println("[2] Show feeding schedule");
+            System.out.println("[3] Sort animals by lifetime");
+            System.out.println("[4] Sign out");
+            System.out.println("[5] Exit");
+            System.out.print("Choose an option: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+
+            switch (choice) {
+                case 1:
+                    displayAnimals(animals);
+                    break;
+                case 2:
+                    //showSchedule();
+                    break;
+                case 3:
+                    sortAnimals();
+                    break;
+                case 4:
+                    logInMenu();
+                case 5:
+                    running = false;
+                    System.out.println("Exiting.");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+        scanner.close();
+        System.exit(0);
+    }
+
     private static void displayAnimals(ArrayList<Animal> animals) {
         System.out.println("All Animals:");
         for (Animal animal : animals) {
-            System.out.println(animal.getName() + ", Type: " + animal.getClass().getSimpleName() +
-                    ", Habitat: " + animal.getHabitat() + ", Lifetime: " + animal.getLifetime() + " years, Blood-type: "+animal.getBloodType()); // Todo: displayAnimal(animal)
+            if (animal.getZookeeper().getName().equals(currentZookeeper.getName())) {
+                System.out.println(animal.getName() + ", Type: " + animal.getClass().getSimpleName() + ", Habitat: "
+                + animal.getHabitat() + ", Lifetime: " + animal.getLifetime() + " years, Blood-type: "
+                + animal.getBloodType()); // Todo: displayAnimal(animal)
+            }
         }
     }
 

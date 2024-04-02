@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="In accordance with the teacher, new goals have been set. Therefore, the new class Zookeeper was created. Moreover, the attribute feedingtime was added to the animal class.">
+    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="The attribute zookeeper was added to the animal class. 5 zookeepers was created.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Amphibian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Amphibian.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnimalLexiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnimalLexiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Coldblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Coldblooded.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mammal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mammal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reptile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reptile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warmblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warmblooded.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zookeeper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zookeeper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,12 +25,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "emir-bolin"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;emir-bolin&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -46,9 +39,9 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2dlLZ3RgBVojeAZ0B7i9GQIvdO3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -57,20 +50,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "configurable.group.tools",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -79,7 +72,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710577769501</updated>
-      <workItem from="1710577770483" duration="42949000" />
+      <workItem from="1710577770483" duration="43751000" />
+      <workItem from="1712071059444" duration="8404000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -130,7 +124,14 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1710875554655</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="The attribute zookeeper was added to the animal class. 5 zookeepers was created.">
+      <option name="closed" value="true" />
+      <created>1711476730615</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1711476730615</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +145,7 @@
     <MESSAGE value="50 test animals were added to the code. Also, a function for displaying all the animals was added." />
     <MESSAGE value="The sortAnimals function was created which can sort animals on lifetime from youngest to oldest. Also, the displayAnimals function got an input parameter." />
     <MESSAGE value="In accordance with the teacher, new goals have been set. Therefore, the new class Zookeeper was created. Moreover, the attribute feedingtime was added to the animal class." />
-    <option name="LAST_COMMIT_MESSAGE" value="In accordance with the teacher, new goals have been set. Therefore, the new class Zookeeper was created. Moreover, the attribute feedingtime was added to the animal class." />
+    <MESSAGE value="The attribute zookeeper was added to the animal class. 5 zookeepers was created." />
+    <option name="LAST_COMMIT_MESSAGE" value="The attribute zookeeper was added to the animal class. 5 zookeepers was created." />
   </component>
 </project>

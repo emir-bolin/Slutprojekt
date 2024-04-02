@@ -2,22 +2,16 @@ import java.util.ArrayList;
 
 public class Zookeeper {
     private String name;
-    private ArrayList<Animal> assignedAnimals;
+    private String password;
 
-    public Zookeeper(String name) {
+    public Zookeeper(String name, String password) {
         this.name = name;
-        this.assignedAnimals = new ArrayList<>();
+        this.password = password;
     }
-
-    public void assignAnimal(Animal animal) {
-        this.assignedAnimals.add(animal);
-    }
-
-    public ArrayList<Animal> getAssignedAnimals() {
-        return assignedAnimals;
-    }
-
     public String getName() {
         return name;
+    }
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
     }
 }
