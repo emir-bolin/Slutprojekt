@@ -1,5 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.util.Comparator;
+
 public class AnimalLexiInterface {
     // Attributes
     private static ArrayList<Animal> animals = new ArrayList<>();
@@ -84,7 +89,7 @@ public class AnimalLexiInterface {
         animals.add(new Amphibian("Common Toad", 12, "Croak", "Gardens/Forests", "Skin", "Lungs/Skin", false, false, "18:30", zookeepers.get(4)));
     }
 
-    private static boolean findWord(String word, boolean isPassword){ //Todo: find better name
+    private static boolean findNameOrPassword(String word, boolean isPassword){
         for (Zookeeper zookeeper : zookeepers) {
             if (isPassword) {
                 if (zookeeper.checkPassword(word)) {
@@ -116,11 +121,11 @@ public class AnimalLexiInterface {
 
         System.out.print("State your name.\nName: ");
         String name = scanner.nextLine();
-        boolean correctName = findWord(name, false);
+        boolean correctName = findNameOrPassword(name, false);
 
         System.out.print("State your password.\nPassword: ");
         String password = scanner.nextLine();
-        boolean correctPassword = findWord(password, true);
+        boolean correctPassword = findNameOrPassword(password, true);
 
         if (correctName && correctPassword){
             currentZookeeper = getZookeeperByName(name);
@@ -153,10 +158,10 @@ public class AnimalLexiInterface {
                     displayAnimals(animals);
                     break;
                 case 2:
-                    //showSchedule();
+                    showSchedule();
                     break;
                 case 3:
-                    sortAnimals();
+                    sortAnimalsByLifetime();
                     break;
                 case 4:
                     logInMenu();
@@ -178,14 +183,14 @@ public class AnimalLexiInterface {
             if (animal.getZookeeper().getName().equals(currentZookeeper.getName())) {
                 System.out.println(animal.getName() + ", Type: " + animal.getClass().getSimpleName() + ", Habitat: "
                 + animal.getHabitat() + ", Lifetime: " + animal.getLifetime() + " years, Blood-type: "
-                + animal.getBloodType()); // Todo: displayAnimal(animal)
+                + animal.getBloodType());
             }
         }
     }
 
-    private static void sortAnimals(){
+    private static void sortAnimalsByLifetime(){
         ArrayList<Animal> lifetimeArrayList = animals;
-        int n = lifetimeArrayList.size(); // Todo: find better variable name
+        int n = lifetimeArrayList.size();
 
         for (int i = 0; i < n - 1; i++){
             for (int j = 0; j < n - i - 1; j++){
@@ -197,5 +202,39 @@ public class AnimalLexiInterface {
             }
         }
         displayAnimals(lifetimeArrayList); // Todo: make it possible to invert arraylist
+    }
+
+    private static void showSchedule(){
+        ArrayList<AnimalDateTimePair> pairs = appendTimeToToday(animals);
+        sortAndPrintAnimalsByFeedingTime(pairs);
+    }
+
+    private static ArrayList<AnimalDateTimePair> appendTimeToToday(ArrayList<Animal> animals) {
+        LocalDate today = LocalDate.now(); // Get today's date
+        ArrayList<AnimalDateTimePair> dateTimePairs = new ArrayList<>();
+
+        for (Animal animal : animals) {
+            try {
+                LocalTime localTime = LocalTime.parse(animal.getFeedingtime());
+                LocalDateTime dateTime = LocalDateTime.of(today, localTime); // Combine date and time
+                dateTimePairs.add(new AnimalDateTimePair(animal, dateTime));
+            } catch (Exception e) {
+                System.out.println("Error parsing feeding time: " + animal.getFeedingtime() + " for " + animal.getName());
+            }
+        }
+        return dateTimePairs;
+    }
+
+    private static void sortAndPrintAnimalsByFeedingTime(ArrayList<AnimalDateTimePair> pairs) {
+        // Sort pairs by LocalDateTime
+        pairs.sort(Comparator.comparing(AnimalDateTimePair::getFeedingDateTime));
+
+        // Print sorted list
+        System.out.println("Feeding schedule:");
+        for (AnimalDateTimePair pair : pairs) {
+            if (pair.getAnimal().getZookeeper().getName().equals(currentZookeeper.getName())){
+                System.out.println(pair.getAnimal().getFeedingtime() + " - " + pair.getAnimal().getName());
+            }
+        }
     }
 }

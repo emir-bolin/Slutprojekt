@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="The attribute zookeeper was added to the animal class. 5 zookeepers was created.">
+    <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="Created a new function logInMenu. The attribute password was added to the Zookeeper class in order to log in to private menu. System exit was added for closing the program. DisplayAnimals function now only shows the current zookeepers animals.">
+      <change afterPath="$PROJECT_DIR$/src/AnimalDateTimePair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Amphibian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Amphibian.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnimalLexiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnimalLexiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zookeeper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zookeeper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bird.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Coldblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Coldblooded.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mammal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mammal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reptile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reptile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Warmblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warmblooded.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710577769501</updated>
       <workItem from="1710577770483" duration="43751000" />
-      <workItem from="1712071059444" duration="8404000" />
+      <workItem from="1712071059444" duration="14573000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -131,7 +138,14 @@
       <option name="presentableId" value="LOCAL−00008" />
       <updated>1711476730615</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL−00009" summary="Created a new function logInMenu. The attribute password was added to the Zookeeper class in order to log in to private menu. System exit was added for closing the program. DisplayAnimals function now only shows the current zookeepers animals.">
+      <option name="closed" value="true" />
+      <created>1712080712754</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1712080712754</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +160,7 @@
     <MESSAGE value="The sortAnimals function was created which can sort animals on lifetime from youngest to oldest. Also, the displayAnimals function got an input parameter." />
     <MESSAGE value="In accordance with the teacher, new goals have been set. Therefore, the new class Zookeeper was created. Moreover, the attribute feedingtime was added to the animal class." />
     <MESSAGE value="The attribute zookeeper was added to the animal class. 5 zookeepers was created." />
-    <option name="LAST_COMMIT_MESSAGE" value="The attribute zookeeper was added to the animal class. 5 zookeepers was created." />
+    <MESSAGE value="Created a new function logInMenu. The attribute password was added to the Zookeeper class in order to log in to private menu. System exit was added for closing the program. DisplayAnimals function now only shows the current zookeepers animals." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a new function logInMenu. The attribute password was added to the Zookeeper class in order to log in to private menu. System exit was added for closing the program. DisplayAnimals function now only shows the current zookeepers animals." />
   </component>
 </project>

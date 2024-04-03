@@ -1,6 +1,6 @@
 public class Reptile extends Coldblooded {
-    public Reptile(String name, int lifetime, String sound, String habitat, String skin, String breathing, boolean canSwim, boolean canFly, String feedingTime, Zookeeper zookeeper) {
-        super(name, lifetime, sound, habitat, skin, breathing, canSwim, canFly, feedingTime, zookeeper);
+    public Reptile(String name, int lifetime, String sound, String habitat, String skin, String breathing, boolean canSwim, boolean canFly, String feedingtime, Zookeeper zookeeper) {
+        super(name, lifetime, sound, habitat, skin, breathing, canSwim, canFly, feedingtime, zookeeper);
     }
 
     @Override
