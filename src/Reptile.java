@@ -7,4 +7,8 @@ public class Reptile extends Coldblooded {
     public void makeSound() {
         System.out.println(getSound());
     }
+
+    public boolean isReptile(){
+        return true;
+    }
 }

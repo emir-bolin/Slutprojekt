@@ -117,7 +117,7 @@ public class AnimalLexiInterface {
     private static void logInMenu(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Welcome to AnimalLexi!");
+        System.out.println("\nWelcome to AnimalLexi!");
 
         System.out.print("State your name.\nName: ");
         String name = scanner.nextLine();
@@ -146,8 +146,9 @@ public class AnimalLexiInterface {
             System.out.println("[1] View animals");
             System.out.println("[2] Show feeding schedule");
             System.out.println("[3] Sort animals by lifetime");
-            System.out.println("[4] Sign out");
-            System.out.println("[5] Exit");
+            System.out.println("[4] Show animals by category");
+            System.out.println("[5] Sign out");
+            System.out.println("[6] Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -164,10 +165,13 @@ public class AnimalLexiInterface {
                     sortAnimalsByLifetime();
                     break;
                 case 4:
-                    logInMenu();
+                    animalCategoryMenu();
+                    break;
                 case 5:
+                    logInMenu();
+                case 6:
                     running = false;
-                    System.out.println("Exiting.");
+                    System.out.println("\nExiting AnimalLexi.");
                     break;
                 default:
                     System.out.println("Invalid option. Please try again.");
@@ -177,8 +181,8 @@ public class AnimalLexiInterface {
         System.exit(0);
     }
 
-    private static void displayAnimals(ArrayList<Animal> animals) {
-        System.out.println("All Animals:");
+    private static void displayAnimals(ArrayList<Animal> animals) { // Todo: print in alfabethical order
+        System.out.println("\nAll Animals:"); // Todo: add an input parameter which determine what to print
         for (Animal animal : animals) {
             if (animal.getZookeeper().getName().equals(currentZookeeper.getName())) {
                 System.out.println(animal.getName() + ", Type: " + animal.getClass().getSimpleName() + ", Habitat: "
@@ -229,12 +233,65 @@ public class AnimalLexiInterface {
         // Sort pairs by LocalDateTime
         pairs.sort(Comparator.comparing(AnimalDateTimePair::getFeedingDateTime));
 
-        // Print sorted list
-        System.out.println("Feeding schedule:");
+        System.out.println("\nFeeding schedule:");
         for (AnimalDateTimePair pair : pairs) {
             if (pair.getAnimal().getZookeeper().getName().equals(currentZookeeper.getName())){
                 System.out.println(pair.getAnimal().getFeedingtime() + " - " + pair.getAnimal().getName());
             }
         }
+    }
+
+    private static void animalCategoryMenu() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nType a number from 1 to 7");
+        System.out.println("[1] Show warmblooded animals");
+        System.out.println("[2] Show coldblooded animals");
+        System.out.println("[3] Show all mammals");
+        System.out.println("[4] Show all birds");
+        System.out.println("[5] Show all fish");
+        System.out.println("[6] Show all reptiles");
+        System.out.println("[7] Show all amphibians");
+        System.out.print("Choose an option: ");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+
+        switch (choice) {
+            case 1 -> sortAnimalsByCategory("Warmblooded", "");
+            case 2 -> sortAnimalsByCategory("Coldblooded", "");
+            case 3 -> sortAnimalsByCategory("", "Mammal");
+            case 4 -> sortAnimalsByCategory("", "Bird");
+            case 5 -> sortAnimalsByCategory("", "Fish");
+            case 6 -> sortAnimalsByCategory("", "Reptile");
+            case 7 -> sortAnimalsByCategory("", "Amphibian");
+        }
+    }
+
+    private static void sortAnimalsByCategory(String category1, String category2){
+        ArrayList<Animal> categorizedyArrayList = new ArrayList<>();
+
+        for (Animal animal : animals) {
+            if (animal.getBloodType().equals(category1)){ // Works for both warm- and coldblooded animals
+                categorizedyArrayList.add(animal);
+            }
+            else if (animal.isMammal() && category2.equals("Mammal")){
+                categorizedyArrayList.add(animal);
+            }
+            else if (animal.isBird() && category2.equals("Bird")){
+                categorizedyArrayList.add(animal);
+            }
+            else if (animal.isFish() && category2.equals("Fish")){
+                categorizedyArrayList.add(animal);
+            }
+            else if (animal.isReptile() && category2.equals("Reptile")){
+                categorizedyArrayList.add(animal);
+            }
+            else if (animal.isAmphibian() && category2.equals("Amphibian")){
+                categorizedyArrayList.add(animal);
+            }
+        }
+        //todo sort categorized list         pairs.sort(Comparator.comparing(AnimalDateTimePair::getFeedingDateTime));
+        displayAnimals(categorizedyArrayList);
     }
 }

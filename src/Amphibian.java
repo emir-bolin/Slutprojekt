@@ -7,4 +7,8 @@ public class Amphibian extends Coldblooded {
     public void makeSound() {
         System.out.println(getSound());
     }
+
+    public boolean isAmphibian(){
+        return true;
+    }
 }

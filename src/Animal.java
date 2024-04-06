@@ -35,10 +35,13 @@ public abstract class Animal {
     public String getHabitat() { return habitat; }
     public String getSkin() { return skin; }
     public String getBreathing() { return breathing; }
-
     public boolean isCanFly() { return canFly; }
-
     public boolean isCanSwim() { return canSwim; }
+    public boolean isMammal() { return false; }
+    public boolean isBird() { return false; }
+    public boolean isFish() { return false; }
+    public boolean isReptile() { return false; }
+    public boolean isAmphibian() { return false; }
 
     // Implement in every subclass
     public abstract String getBloodType();

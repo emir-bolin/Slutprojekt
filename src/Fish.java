@@ -6,4 +6,8 @@ public class Fish extends Coldblooded {
     public void makeSound() {
         System.out.println(getSound());
     }
+
+    public boolean isFish(){
+        return true;
+    }
 }

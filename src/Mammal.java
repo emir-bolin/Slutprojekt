@@ -7,4 +7,8 @@ public class Mammal extends Warmblooded {
     public void makeSound() {
         System.out.println(getSound());
     }
+
+    public boolean isMammal(){
+        return true;
+    }
 }

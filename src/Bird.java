@@ -7,4 +7,8 @@ public class Bird extends Warmblooded {
     public void makeSound() {
         System.out.println(getSound());
     }
+
+    public boolean isBird(){
+        return true;
+    }
 }
