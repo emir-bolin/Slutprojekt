@@ -4,12 +4,14 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.util.Comparator;
+import java.util.InputMismatchException;
+import java.util.Collections;
 
 public class AnimalLexiInterface {
     // Attributes
     private static ArrayList<Animal> animals = new ArrayList<>();
     private static ArrayList<Zookeeper> zookeepers = new ArrayList<>();
-    private static Zookeeper currentZookeeper;
+    private static Zookeeper loggedInZookeeper;
 
     // Constructor
     public AnimalLexiInterface() {
@@ -25,6 +27,7 @@ public class AnimalLexiInterface {
         zookeepers.add(new Zookeeper("Yusuf", "123"));
         zookeepers.add(new Zookeeper("Lukas", "123"));
         zookeepers.add(new Zookeeper("Arda", "123"));
+        zookeepers.add(new Zookeeper("Empty", "123"));
 
     }
     private static void initializeAnimals() { // Todo: go through the animals
@@ -128,7 +131,7 @@ public class AnimalLexiInterface {
         boolean correctPassword = findNameOrPassword(password, true);
 
         if (correctName && correctPassword){
-            currentZookeeper = getZookeeperByName(name);
+            loggedInZookeeper = getZookeeperByName(name);
             myMenu();
         }
         else {
@@ -142,17 +145,17 @@ public class AnimalLexiInterface {
         boolean running = true;
 
         while (running) {
-            System.out.println("\nType a number from 1 to 5");
+            System.out.println("\nType a number from 1 to 7");
             System.out.println("[1] View animals");
             System.out.println("[2] Show feeding schedule");
             System.out.println("[3] Sort animals by lifetime");
             System.out.println("[4] Show animals by category");
-            System.out.println("[5] Sign out");
-            System.out.println("[6] Exit");
+            System.out.println("[5] Perform animal concert");
+            System.out.println("[6] Sign out");
+            System.out.println("[7] Exit");
             System.out.print("Choose an option: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            int choice = parseIntegerInput(scanner);
 
             switch (choice) {
                 case 1:
@@ -168,8 +171,11 @@ public class AnimalLexiInterface {
                     animalCategoryMenu();
                     break;
                 case 5:
-                    logInMenu();
+                    performConcert();
+                    break;
                 case 6:
+                    logInMenu();
+                case 7:
                     running = false;
                     System.out.println("\nExiting AnimalLexi.");
                     break;
@@ -184,7 +190,7 @@ public class AnimalLexiInterface {
     private static void displayAnimals(ArrayList<Animal> animals) { // Todo: print in alfabethical order
         System.out.println("\nAll Animals:"); // Todo: add an input parameter which determine what to print
         for (Animal animal : animals) {
-            if (animal.getZookeeper().getName().equals(currentZookeeper.getName())) {
+            if (animal.getZookeeper().getName().equals(loggedInZookeeper.getName())) {
                 System.out.println(animal.getName() + ", Type: " + animal.getClass().getSimpleName() + ", Habitat: "
                 + animal.getHabitat() + ", Lifetime: " + animal.getLifetime() + " years, Blood-type: "
                 + animal.getBloodType());
@@ -235,7 +241,7 @@ public class AnimalLexiInterface {
 
         System.out.println("\nFeeding schedule:");
         for (AnimalDateTimePair pair : pairs) {
-            if (pair.getAnimal().getZookeeper().getName().equals(currentZookeeper.getName())){
+            if (pair.getAnimal().getZookeeper().getName().equals(loggedInZookeeper.getName())){
                 System.out.println(pair.getAnimal().getFeedingtime() + " - " + pair.getAnimal().getName());
             }
         }
@@ -254,8 +260,7 @@ public class AnimalLexiInterface {
         System.out.println("[7] Show all amphibians");
         System.out.print("Choose an option: ");
 
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        int choice = parseIntegerInput(scanner);
 
         switch (choice) {
             case 1 -> sortAnimalsByCategory("Warmblooded", "");
@@ -293,5 +298,25 @@ public class AnimalLexiInterface {
         }
         //todo sort categorized list         pairs.sort(Comparator.comparing(AnimalDateTimePair::getFeedingDateTime));
         displayAnimals(categorizedyArrayList);
+    }
+
+    private static int parseIntegerInput(Scanner scanner){
+        int choice;
+        try {
+            choice = scanner.nextInt();
+        } catch (InputMismatchException e){
+            choice = 0; // Automatically goes to default error message
+        }
+        scanner.nextLine(); // consume newline
+        return choice;
+    }
+    private static void performConcert(){
+        Collections.shuffle(animals); // Randomize the order of animals
+
+        for (Animal animal : animals) {
+            if (animal.getZookeeper().getName().equals(loggedInZookeeper.getName())) {
+                animal.makeSound();
+            }
+        }
     }
 }
