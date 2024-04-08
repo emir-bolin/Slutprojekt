@@ -1,8 +1,8 @@
-public class Zookeeper {
+public class Admin {
     private String name;
     private String password;
 
-    public Zookeeper(String name, String password) {
+    public Admin(String name, String password) {
         this.name = name;
         this.password = password;
     }

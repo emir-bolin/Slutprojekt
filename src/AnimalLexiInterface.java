@@ -1,3 +1,4 @@
+import java.security.PrivateKey;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -12,23 +13,29 @@ public class AnimalLexiInterface {
     private static ArrayList<Animal> animals = new ArrayList<>();
     private static ArrayList<Zookeeper> zookeepers = new ArrayList<>();
     private static Zookeeper loggedInZookeeper;
+    private static ArrayList<Admin> admins = new ArrayList<>();
+    private static Admin loggedInAdmin;
 
     // Constructor
     public AnimalLexiInterface() {
         initializeZookeepers();
         initializeAnimals();
-        logInMenu();
+        initializeAdmins();
+        startMenu();
     }
 
     // Methods
+    private static void initializeAdmins(){
+        admins.add(new Admin("Adam", "123"));
+        admins.add(new Admin("Oskar", "123"));
+    }
+
     private static void initializeZookeepers(){
         zookeepers.add(new Zookeeper("Emir", "123"));
         zookeepers.add(new Zookeeper("Liv", "123"));
         zookeepers.add(new Zookeeper("Yusuf", "123"));
         zookeepers.add(new Zookeeper("Lukas", "123"));
         zookeepers.add(new Zookeeper("Arda", "123"));
-        zookeepers.add(new Zookeeper("Empty", "123"));
-
     }
     private static void initializeAnimals() { // Todo: go through the animals
         // Mammals
@@ -108,6 +115,15 @@ public class AnimalLexiInterface {
         return false;
     }
 
+    private static Admin getAdminByName(String name){ // Todo: Combine this getter with getZookeepersByName
+        for (Admin admin : admins) {
+            if (admin.getName().equals(name)) {
+                return admin;
+            }
+        }
+        return null;
+    }
+
     private static Zookeeper getZookeeperByName(String name){
         for (Zookeeper zookeeper : zookeepers) {
             if (zookeeper.getName().equals(name)) {
@@ -117,7 +133,37 @@ public class AnimalLexiInterface {
         return null;
     }
 
-    private static void logInMenu(){
+    private static void startMenu(){
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\nType a number from 1 to 3");
+            System.out.println("[1] Log in as admin");
+            System.out.println("[2] Log in as zookeeper");
+            System.out.println("[7] Exit");
+            System.out.print("Choose an option: ");
+
+            int choice = parseIntegerInput(scanner);
+
+            switch (choice) {
+                case 1:
+                    logInMenu(true);
+                    break;
+                case 2:
+                    logInMenu(false);
+                    break;
+                case 3:
+                    running = false;
+                    System.out.println("\nExiting AnimalLexi.");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+    }
+
+    private static void logInMenu(Boolean isAdmin){
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\nWelcome to AnimalLexi!");
@@ -131,12 +177,18 @@ public class AnimalLexiInterface {
         boolean correctPassword = findNameOrPassword(password, true);
 
         if (correctName && correctPassword){
-            loggedInZookeeper = getZookeeperByName(name);
+            if (isAdmin){
+                loggedInAdmin = getAdminByName(name);
+                // Todo: create an admin menu
+            }
+            else {
+                loggedInZookeeper = getZookeeperByName(name);
+            }
             myMenu();
         }
         else {
             System.out.println("Name or password is wrong, please try again."); // For security reasons it is not directly reviled what is wrong
-            logInMenu(); // Recursive call
+            logInMenu(isAdmin); // Recursive call
         }
     }
 
@@ -174,7 +226,7 @@ public class AnimalLexiInterface {
                     performConcert();
                     break;
                 case 6:
-                    logInMenu();
+                    startMenu();
                 case 7:
                     running = false;
                     System.out.println("\nExiting AnimalLexi.");
