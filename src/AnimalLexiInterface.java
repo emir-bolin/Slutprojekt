@@ -1,4 +1,3 @@
-import java.security.PrivateKey;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -99,16 +98,30 @@ public class AnimalLexiInterface {
         animals.add(new Amphibian("Common Toad", 12, "Croak", "Gardens/Forests", "Skin", "Lungs/Skin", false, false, "18:30", zookeepers.get(4)));
     }
 
-    private static boolean findNameOrPassword(String word, boolean isPassword){
-        for (Zookeeper zookeeper : zookeepers) {
-            if (isPassword) {
-                if (zookeeper.checkPassword(word)) {
-                    return true;
+    private static boolean findNameOrPassword(String word, boolean isPassword, boolean isAdmin){ // Todo: find better solution
+        if (isAdmin){
+            for (Admin admin : admins) {
+                if (isPassword) {
+                    if (admin.checkPassword(word)) {
+                        return true;
+                    }
+                } else {
+                    if (admin.getName().equals(word)) {
+                        return true;
+                    }
                 }
-
-            } else {
-                if (zookeeper.getName().equals(word)) {
-                    return true;
+            }
+        }
+        else {
+            for (Zookeeper zookeeper : zookeepers) {
+                if (isPassword) {
+                    if (zookeeper.checkPassword(word)) {
+                        return true;
+                    }
+                } else {
+                    if (zookeeper.getName().equals(word)) {
+                        return true;
+                    }
                 }
             }
         }
@@ -141,24 +154,19 @@ public class AnimalLexiInterface {
             System.out.println("\nType a number from 1 to 3");
             System.out.println("[1] Log in as admin");
             System.out.println("[2] Log in as zookeeper");
-            System.out.println("[7] Exit");
+            System.out.println("[3] Exit");
             System.out.print("Choose an option: ");
 
             int choice = parseIntegerInput(scanner);
 
             switch (choice) {
-                case 1:
-                    logInMenu(true);
-                    break;
-                case 2:
-                    logInMenu(false);
-                    break;
-                case 3:
+                case 1 -> logInMenu(true);
+                case 2 -> logInMenu(false);
+                case 3 -> {
                     running = false;
                     System.out.println("\nExiting AnimalLexi.");
-                    break;
-                default:
-                    System.out.println("Invalid option. Please try again.");
+                }
+                default -> System.out.println("Invalid option. Please try again.");
             }
         }
     }
@@ -170,21 +178,21 @@ public class AnimalLexiInterface {
 
         System.out.print("State your name.\nName: ");
         String name = scanner.nextLine();
-        boolean correctName = findNameOrPassword(name, false);
+        boolean correctName = findNameOrPassword(name, false, isAdmin);
 
         System.out.print("State your password.\nPassword: ");
         String password = scanner.nextLine();
-        boolean correctPassword = findNameOrPassword(password, true);
+        boolean correctPassword = findNameOrPassword(password, true, isAdmin);
 
         if (correctName && correctPassword){
             if (isAdmin){
                 loggedInAdmin = getAdminByName(name);
-                // Todo: create an admin menu
+                adminMenu();
             }
             else {
                 loggedInZookeeper = getZookeeperByName(name);
+                zookeeperMenu();
             }
-            myMenu();
         }
         else {
             System.out.println("Name or password is wrong, please try again."); // For security reasons it is not directly reviled what is wrong
@@ -192,7 +200,38 @@ public class AnimalLexiInterface {
         }
     }
 
-    private static void myMenu(){
+    private static void adminMenu(){
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\nType a number from 1 to 4");
+            System.out.println("[1] View employes");
+            System.out.println("[2] Change assigned animals");
+            System.out.println("[3] Sign out");
+            System.out.println("[4] Exit");
+            System.out.print("Choose an option: ");
+
+            int choice = parseIntegerInput(scanner);
+
+            switch (choice) {
+                case 1 -> {
+                }
+                case 2 -> {
+                }
+                case 3 -> {
+                }
+                case 4 -> {
+                    running = false;
+                    System.out.println("\nExiting AnimalLexi.");
+                }
+                default -> System.out.println("Invalid option. Please try again.");
+            }
+        }
+        scanner.close();
+        System.exit(0);
+    }
+    private static void zookeeperMenu(){
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
