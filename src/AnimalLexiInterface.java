@@ -25,12 +25,12 @@ public class AnimalLexiInterface {
 
     // Methods
     private static void initializeAdmins() {
-        admins.add(new Admin("Adam", "123"));
-        admins.add(new Admin("Oskar", "123"));
+        admins.add(new Admin("Emir", "123"));
+        admins.add(new Admin("Admin", "123"));
     }
 
     private static void initializeZookeepers() {
-        zookeepers.add(new Zookeeper("Emir", "123"));
+        zookeepers.add(new Zookeeper("Adam", "123"));
         zookeepers.add(new Zookeeper("Liv", "123"));
         zookeepers.add(new Zookeeper("Yusuf", "123"));
         zookeepers.add(new Zookeeper("Lukas", "123"));
@@ -146,6 +146,17 @@ public class AnimalLexiInterface {
         return null;
     }
 
+    private static Animal getAnimalByName(String name) { // Todo: check if this function can be used anywhere else
+        for (Animal animal : animals) {
+            if (animal.getZookeeper().getName().equals(loggedInZookeeper.getName())) {
+                if (animal.getName().equals(name)) {
+                    return animal;
+                }
+            }
+        }
+        return null;
+    }
+
     private static void startMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -203,7 +214,7 @@ public class AnimalLexiInterface {
         boolean running = true;
 
         while (running) {
-            System.out.println("\nType a number from 1 to 4");
+            System.out.println("\nType a number from 1 to 3");
             System.out.println("[1] View employees");
             System.out.println("[2] Sign out");
             System.out.println("[3] Exit");
@@ -280,22 +291,75 @@ public class AnimalLexiInterface {
             System.out.println(zookeeper.getName());
         }
         System.out.print("Name: ");
-
-        String selectedZookeeper = scanner.nextLine(); // Todo: add try-catch
+        String selectedZookeeper = scanner.nextLine();
 
         loggedInZookeeper = getZookeeperByName(selectedZookeeper); // Admin gets easier access to zookeeper
-        if (loggedInZookeeper != null) {
-            adminMenu3();
-        } else {
+        if (loggedInZookeeper == null) { // Could not find zookeeper
             adminMenu2();
+        } else {
+            selectAnimalByFeedingtime().setFeedingtime(selectFeedingtime(scanner));
+            showSchedule();
         }
     }
 
-    private static void adminMenu3() { // Todo: find better name
 
+    private static Animal selectAnimalByFeedingtime() { // Todo: find better name
+        Scanner scanner = new Scanner(System.in);
+
+        showSchedule();
+        System.out.println("Select an animal's feeding time by typing the name.");
+        System.out.print("Name: ");
+        String animalName = scanner.nextLine();
+        Animal selectedAnimal = getAnimalByName(animalName);
+
+        if (selectedAnimal == null) {
+            selectAnimalByFeedingtime(); // Recursive call
+        }
+        return selectedAnimal;
     }
 
-    private static void displayAnimals(ArrayList<Animal> animals) { // Todo: print in alfabetical order
+    private static String selectFeedingtime(Scanner scanner) { // Todo: find better name
+        String hourString;
+        String minuteString;
+
+        try {
+            // Takes in feeding time hour and validates it
+            System.out.print("Type in the hour 0 - 23 in which the animal will be fed.\nHour: ");
+            int hour = scanner.nextInt();
+            hourString = verifyHourOrMinute(hour, true);
+            if (hourString == null) {
+                System.out.println("Invalid input for hour.");
+                return selectFeedingtime(scanner);
+            }
+
+            // Takes in feeding time minute and validates it
+            System.out.print("Type in the minute 0 - 59 in which the animal will be fed.\nMinute: ");
+            int minute = scanner.nextInt();
+            minuteString = verifyHourOrMinute(minute, false);
+            if (minuteString == null) {
+                System.out.println("Invalid input for minute.");
+                return selectFeedingtime(scanner); // Recursive call
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Only numbers are allowed.");
+            return selectFeedingtime(scanner); // Recursive call
+        }
+        return hourString + ":" + minuteString;
+    }
+
+    private static String verifyHourOrMinute(int time, boolean isHour) {
+        String timeString = Integer.toString(time);
+
+        if (time < 0 || (isHour && time > 23) || (!isHour && time > 59)) { // Checks if hours or minutes is valid
+            return null;
+        }
+        if (time < 10) {
+            timeString = "0" + timeString; // Makes sure that format is HH:MM
+        }
+        return timeString;
+    }
+
+    private static void displayAnimals(ArrayList<Animal> animals) {
         System.out.println("\nAll Animals:"); // Todo: add an input parameter which determine what to print
         for (Animal animal : animals) {
             if (animal.getZookeeper().getName().equals(loggedInZookeeper.getName())) {
@@ -324,7 +388,7 @@ public class AnimalLexiInterface {
 
     private static void showSchedule() {
         ArrayList<AnimalDateTimePair> pairs = appendTimeToToday(animals);
-        sortAndPrintAnimalsByFeedingTime(pairs);
+        sortAndPrintAnimalsByFeedingtime(pairs);
     }
 
     private static ArrayList<AnimalDateTimePair> appendTimeToToday(ArrayList<Animal> animals) {
@@ -343,7 +407,7 @@ public class AnimalLexiInterface {
         return dateTimePairs;
     }
 
-    private static void sortAndPrintAnimalsByFeedingTime(ArrayList<AnimalDateTimePair> pairs) {
+    private static void sortAndPrintAnimalsByFeedingtime(ArrayList<AnimalDateTimePair> pairs) {
         // Sort pairs by LocalDateTime
         pairs.sort(Comparator.comparing(AnimalDateTimePair::getFeedingDateTime));
 
