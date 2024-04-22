@@ -1,14 +1,18 @@
+// Subclass of Coldblooded which represents type of animal
 public class Amphibian extends Coldblooded {
+    // Constructor
     public Amphibian(String name, int lifetime, String sound, String habitat, String skin, String breathing, boolean canSwim, boolean canFly, String feedingtime, Zookeeper zookeeper) {
         super(name, lifetime, sound, habitat, skin, breathing, canSwim, canFly, feedingtime, zookeeper);
     }
 
+    // Methods
     @Override
     public void makeSound() {
         System.out.println(getSound());
     }
 
-    public boolean isAmphibian(){
+    // Getters
+    public boolean isAmphibian() {
         return true;
     }
 }

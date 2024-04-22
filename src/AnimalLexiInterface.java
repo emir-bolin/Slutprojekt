@@ -7,37 +7,51 @@ import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Collections;
 
+// Class that represents user interface
 public class AnimalLexiInterface {
     // Attributes
-    private static ArrayList<Animal> animals = new ArrayList<>();
-    private static ArrayList<Zookeeper> zookeepers = new ArrayList<>();
-    private static Zookeeper loggedInZookeeper;
-    private static ArrayList<Admin> admins = new ArrayList<>();
-    private static Admin loggedInAdmin;
+    private ArrayList<Animal> animals = new ArrayList<>();
+    private ArrayList<Zookeeper> zookeepers = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
+    private User loggedInZookeeper;
+    private User loggedInAdmin;
 
     // Constructor
     public AnimalLexiInterface() {
-        initializeZookeepers();
+        initializeUsers();
         initializeAnimals();
-        initializeAdmins();
         startMenu();
     }
 
     // Methods
-    private static void initializeAdmins() {
-        admins.add(new Admin("Emir", "123"));
-        admins.add(new Admin("Admin", "123"));
+
+    // Method that creates user objects and assort them into an arraylist
+    private void initializeUsers() {
+        // Admins
+        users.add(new Admin("Emir", "123"));
+        users.add(new Admin("Admin", "123"));
+
+        // Zookeepers
+        users.add(new Zookeeper("Adam", "123"));
+        users.add(new Zookeeper("Liv", "123"));
+        users.add(new Zookeeper("Yusuf", "123"));
+        users.add(new Zookeeper("Lukas", "123"));
+        users.add(new Zookeeper("Arda", "123"));
+
+        setZookeepers();
     }
 
-    private static void initializeZookeepers() {
-        zookeepers.add(new Zookeeper("Adam", "123"));
-        zookeepers.add(new Zookeeper("Liv", "123"));
-        zookeepers.add(new Zookeeper("Yusuf", "123"));
-        zookeepers.add(new Zookeeper("Lukas", "123"));
-        zookeepers.add(new Zookeeper("Arda", "123"));
+    // Method which assort zookeepers to an Arraylist to assign animals
+    private void setZookeepers() {
+        for (User user : users) {
+            if (!user.isAdmin()) { // Not admin is by definition zookeeper
+                zookeepers.add((Zookeeper) user); // Typecast user to zookeeper
+            }
+        }
     }
 
-    private static void initializeAnimals() { // Todo: go through the animals
+    // Method that creates animals objects and assort them into an arraylist
+    private void initializeAnimals() {
         // Mammals
         animals.add(new Mammal("Lion", 14, "Roar", "Land", "Fur", "Lungs", false, false, "08:00", zookeepers.get(0)));
         animals.add(new Mammal("Tiger", 12, "Roar", "Land", "Fur", "Lungs", false, false, "09:00", zookeepers.get(0)));
@@ -99,54 +113,34 @@ public class AnimalLexiInterface {
         animals.add(new Amphibian("Common Toad", 12, "Croak", "Gardens/Forests", "Skin", "Lungs/Skin", false, false, "18:30", zookeepers.get(4)));
     }
 
-    private static boolean findNameOrPassword(String word, boolean isPassword, boolean isAdmin) { // Todo: find better solution
-        if (isAdmin) {
-            for (Admin admin : admins) {
-                if (isPassword) {
-                    if (admin.checkPassword(word)) {
-                        return true;
-                    }
-                } else {
-                    if (admin.getName().equals(word)) {
-                        return true;
-                    }
+    // Function that finds either name or password for a user, compares it and returns if it's true or not
+    private boolean findNameOrPassword(String word, boolean isPassword) {
+        for (User user : users) {
+            if (isPassword) {
+                if (user.checkPassword(word)) {
+                    return true;
                 }
-            }
-        } else {
-            for (Zookeeper zookeeper : zookeepers) {
-                if (isPassword) {
-                    if (zookeeper.checkPassword(word)) {
-                        return true;
-                    }
-                } else {
-                    if (zookeeper.getName().equals(word)) {
-                        return true;
-                    }
+            } else {
+                if (user.getName().equals(word)) {
+                    return true;
                 }
             }
         }
         return false;
     }
 
-    private static Admin getAdminByName(String name) { // Todo: Combine this getter with getZookeepersByName
-        for (Admin admin : admins) {
-            if (admin.getName().equals(name)) {
-                return admin;
+    // Function that returns user object by comparing the name
+    private User getUserByName(String name) {
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                return user;
             }
         }
         return null;
     }
 
-    private static Zookeeper getZookeeperByName(String name) {
-        for (Zookeeper zookeeper : zookeepers) {
-            if (zookeeper.getName().equals(name)) {
-                return zookeeper;
-            }
-        }
-        return null;
-    }
-
-    private static Animal getAnimalByName(String name) { // Todo: check if this function can be used anywhere else
+    // Function that returns animal object by comparing the name
+    private Animal getAnimalByName(String name) {
         for (Animal animal : animals) {
             if (animal.getZookeeper().getName().equals(loggedInZookeeper.getName())) {
                 if (animal.getName().equals(name)) {
@@ -157,23 +151,22 @@ public class AnimalLexiInterface {
         return null;
     }
 
-    private static void startMenu() {
+    // Method that represents the start interface that the user will interact with
+    private void startMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
         while (running) {
-            System.out.println("\nType a number from 1 to 3");
-            System.out.println("[1] Log in as admin");
-            System.out.println("[2] Log in as zookeeper");
-            System.out.println("[3] Exit");
+            System.out.println("\nType a number from 1 to 2");
+            System.out.println("[1] Log in");
+            System.out.println("[2] Exit");
             System.out.print("Choose an option: ");
 
             int choice = parseIntegerInput(scanner);
 
             switch (choice) {
-                case 1 -> logInMenu(true);
-                case 2 -> logInMenu(false);
-                case 3 -> {
+                case 1 -> logInMenu();
+                case 2 -> {
                     running = false;
                     System.out.println("\nExiting AnimalLexi.");
                 }
@@ -182,40 +175,44 @@ public class AnimalLexiInterface {
         }
     }
 
-    private static void logInMenu(Boolean isAdmin) {
+    // Method used for user to log in
+    private void logInMenu() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\nWelcome to AnimalLexi!");
 
         System.out.print("State your name.\nName: ");
         String name = scanner.nextLine();
-        boolean correctName = findNameOrPassword(name, false, isAdmin);
+        boolean correctName = findNameOrPassword(name, false);
 
         System.out.print("State your password.\nPassword: ");
         String password = scanner.nextLine();
-        boolean correctPassword = findNameOrPassword(password, true, isAdmin);
+        boolean correctPassword = findNameOrPassword(password, true);
 
         if (correctName && correctPassword) {
-            if (isAdmin) {
-                loggedInAdmin = getAdminByName(name);
-                adminMenu();
+            User user = getUserByName(name);
+
+            if (user.isAdmin()) {
+                loggedInAdmin = user;
+                adminMainMenu();
             } else {
-                loggedInZookeeper = getZookeeperByName(name);
-                zookeeperMenu();
+                loggedInZookeeper = user;
+                zookeeperMainMenu();
             }
         } else {
             System.out.println("Name or password is wrong, please try again."); // For security reasons it is not directly reviled what is wrong
-            logInMenu(isAdmin); // Recursive call
+            logInMenu(); // Recursive call
         }
     }
 
-    private static void adminMenu() {
+    // Method that represents a menu used by admins to change feeding time for animals
+    private void adminMainMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
         while (running) {
             System.out.println("\nType a number from 1 to 3");
-            System.out.println("[1] View employees");
+            System.out.println("[1] View zookeepers");
             System.out.println("[2] Sign out");
             System.out.println("[3] Exit");
             System.out.print("Choose an option: ");
@@ -223,7 +220,7 @@ public class AnimalLexiInterface {
             int choice = parseIntegerInput(scanner);
 
             switch (choice) {
-                case 1 -> adminMenu2();
+                case 1 -> adminSubMenu();
                 case 2 -> startMenu();
                 case 3 -> {
                     running = false;
@@ -236,7 +233,8 @@ public class AnimalLexiInterface {
         System.exit(0);
     }
 
-    private static void zookeeperMenu() {
+    // Method that represents a menu used by zookeepers to interact with their animals
+    private void zookeeperMainMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
@@ -255,7 +253,7 @@ public class AnimalLexiInterface {
 
             switch (choice) {
                 case 1:
-                    displayAnimals(animals);
+                    displayAnimals(animals, "All Animals:");
                     break;
                 case 2:
                     showSchedule();
@@ -283,27 +281,29 @@ public class AnimalLexiInterface {
         System.exit(0);
     }
 
-    private static void adminMenu2() { // Todo: find better name
+    // Method that represents a sub-menu used by admin to change feeding time for animals
+    private void adminSubMenu() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\nSelect an employee by typing the name.");
+        System.out.println("\nSelect an zookeeper by typing the name.");
         for (Zookeeper zookeeper : zookeepers) {
             System.out.println(zookeeper.getName());
         }
+
         System.out.print("Name: ");
         String selectedZookeeper = scanner.nextLine();
 
-        loggedInZookeeper = getZookeeperByName(selectedZookeeper); // Admin gets easier access to zookeeper
+        loggedInZookeeper = getUserByName(selectedZookeeper); // Admin "logs in" as zookeeper
         if (loggedInZookeeper == null) { // Could not find zookeeper
-            adminMenu2();
+            adminSubMenu();
         } else {
-            selectAnimalByFeedingtime().setFeedingtime(selectFeedingtime(scanner));
+            selectAnimal().setFeedingtime(getNewFeedingtime(scanner)); // Changes an animals feeding time
             showSchedule();
         }
     }
 
-
-    private static Animal selectAnimalByFeedingtime() { // Todo: find better name
+    // Function that returns an animal based on user input
+    private Animal selectAnimal() {
         Scanner scanner = new Scanner(System.in);
 
         showSchedule();
@@ -313,85 +313,92 @@ public class AnimalLexiInterface {
         Animal selectedAnimal = getAnimalByName(animalName);
 
         if (selectedAnimal == null) {
-            selectAnimalByFeedingtime(); // Recursive call
+            selectAnimal(); // Recursive call if animal is not found
         }
         return selectedAnimal;
     }
 
-    private static String selectFeedingtime(Scanner scanner) { // Todo: find better name
+    // Functions that returns time in string format "HH:MM"
+    private String getNewFeedingtime(Scanner scanner) {
         String hourString;
         String minuteString;
 
         try {
-            // Takes in feeding time hour and validates it
+            // Validates feeding time in hours
             System.out.print("Type in the hour 0 - 23 in which the animal will be fed.\nHour: ");
             int hour = scanner.nextInt();
             hourString = verifyHourOrMinute(hour, true);
             if (hourString == null) {
                 System.out.println("Invalid input for hour.");
-                return selectFeedingtime(scanner);
+                return getNewFeedingtime(scanner); // Recursive call if wrong input for hour
             }
 
-            // Takes in feeding time minute and validates it
+            // Validates feeding time in minutes
             System.out.print("Type in the minute 0 - 59 in which the animal will be fed.\nMinute: ");
             int minute = scanner.nextInt();
             minuteString = verifyHourOrMinute(minute, false);
             if (minuteString == null) {
                 System.out.println("Invalid input for minute.");
-                return selectFeedingtime(scanner); // Recursive call
+                return getNewFeedingtime(scanner); // Recursive call if wrong input for minute
             }
         } catch (InputMismatchException e) {
             System.out.println("Only numbers are allowed.");
-            return selectFeedingtime(scanner); // Recursive call
+            return getNewFeedingtime(scanner); // Recursive call if not numbers are provided
         }
         return hourString + ":" + minuteString;
     }
 
-    private static String verifyHourOrMinute(int time, boolean isHour) {
+    // Function that validates hours between 0 - 23 or minutes between 0 - 59 and returns time as a string
+    private String verifyHourOrMinute(int time, boolean isHour) {
         String timeString = Integer.toString(time);
 
         if (time < 0 || (isHour && time > 23) || (!isHour && time > 59)) { // Checks if hours or minutes is valid
             return null;
         }
         if (time < 10) {
-            timeString = "0" + timeString; // Makes sure that format is HH:MM
+            timeString = "0" + timeString; // Makes sure that format is HH or MM
         }
         return timeString;
     }
 
-    private static void displayAnimals(ArrayList<Animal> animals) {
-        System.out.println("\nAll Animals:"); // Todo: add an input parameter which determine what to print
+    // Generic function for displaying animals assigned to a specific zookeeper
+    private void displayAnimals(ArrayList<Animal> animals, String headLine) {
+        System.out.println("\n" + headLine);
         for (Animal animal : animals) {
             if (animal.getZookeeper().getName().equals(loggedInZookeeper.getName())) {
                 System.out.println(animal.getName() + ", Type: " + animal.getClass().getSimpleName() + ", Habitat: "
                         + animal.getHabitat() + ", Lifetime: " + animal.getLifetime() + " years, Blood-type: "
-                        + animal.getBloodType());
+                        + animal.getBloodType() + ", Swimmer: " + animal.canSwim() + ", Flyer: " + animal.canFly()
+                        + ", Skin: " + animal.getSkin() + ", Breathing: " + animal.getBreathing());
             }
         }
     }
 
-    private static void sortAnimalsByLifetime() {
+    // Method for sorting animals by lifetime lowest to highest
+    private void sortAnimalsByLifetime() {
         ArrayList<Animal> lifetimeArrayList = animals;
-        int n = lifetimeArrayList.size(); // Todo: find better name for n
+        int n = lifetimeArrayList.size(); // n is length of arraylist
 
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (lifetimeArrayList.get(j).getLifetime() > lifetimeArrayList.get(j + 1).getLifetime()) {
-                    Animal temporaryAnimal = lifetimeArrayList.get(j);
+                    Animal temporaryAnimal = lifetimeArrayList.get(j); // Holds an animal temporary
                     lifetimeArrayList.set(j, lifetimeArrayList.get(j + 1));
                     lifetimeArrayList.set(j + 1, temporaryAnimal);
                 }
             }
         }
-        displayAnimals(lifetimeArrayList);
+        displayAnimals(lifetimeArrayList, "Lifetime lowest to oldest:");
     }
 
-    private static void showSchedule() {
+    // Method that presents feeding time for zookeeper
+    private void showSchedule() {
         ArrayList<AnimalDateTimePair> pairs = appendTimeToToday(animals);
         sortAndPrintAnimalsByFeedingtime(pairs);
     }
 
-    private static ArrayList<AnimalDateTimePair> appendTimeToToday(ArrayList<Animal> animals) {
+    // Function that returns list with pairs of animal and their local feeding time
+    private ArrayList<AnimalDateTimePair> appendTimeToToday(ArrayList<Animal> animals) {
         LocalDate today = LocalDate.now(); // Get today's date
         ArrayList<AnimalDateTimePair> dateTimePairs = new ArrayList<>();
 
@@ -407,7 +414,8 @@ public class AnimalLexiInterface {
         return dateTimePairs;
     }
 
-    private static void sortAndPrintAnimalsByFeedingtime(ArrayList<AnimalDateTimePair> pairs) {
+    // Method that presents sorted feeding times
+    private void sortAndPrintAnimalsByFeedingtime(ArrayList<AnimalDateTimePair> pairs) {
         // Sort pairs by LocalDateTime
         pairs.sort(Comparator.comparing(AnimalDateTimePair::getFeedingDateTime));
 
@@ -419,7 +427,8 @@ public class AnimalLexiInterface {
         }
     }
 
-    private static void animalCategoryMenu() {
+    // Method which sorts a zookeepers animals by category
+    private void animalCategoryMenu() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\nType a number from 1 to 7");
@@ -445,40 +454,44 @@ public class AnimalLexiInterface {
         }
     }
 
-    private static void sortAnimalsByCategory(String category1, String category2) {
-        ArrayList<Animal> categorizedyArrayList = new ArrayList<>();
+    // Method that sort animals based on blood type or type of animal
+    private void sortAnimalsByCategory(String bloodType, String typeOfAnimal) {
+        ArrayList<Animal> categorizedArrayList = new ArrayList<>();
 
         for (Animal animal : animals) {
-            if (animal.getBloodType().equals(category1)) { // Works for both warm- and coldblooded animals
-                categorizedyArrayList.add(animal);
-            } else if (animal.isMammal() && category2.equals("Mammal")) {
-                categorizedyArrayList.add(animal);
-            } else if (animal.isBird() && category2.equals("Bird")) {
-                categorizedyArrayList.add(animal);
-            } else if (animal.isFish() && category2.equals("Fish")) {
-                categorizedyArrayList.add(animal);
-            } else if (animal.isReptile() && category2.equals("Reptile")) {
-                categorizedyArrayList.add(animal);
-            } else if (animal.isAmphibian() && category2.equals("Amphibian")) {
-                categorizedyArrayList.add(animal);
+            if (animal.getBloodType().equals(bloodType)) { // Works for both warm- and coldblooded animals
+                categorizedArrayList.add(animal);
+            } else if (animal.isMammal() && typeOfAnimal.equals("Mammal")) {
+                categorizedArrayList.add(animal);
+            } else if (animal.isBird() && typeOfAnimal.equals("Bird")) {
+                categorizedArrayList.add(animal);
+            } else if (animal.isFish() && typeOfAnimal.equals("Fish")) {
+                categorizedArrayList.add(animal);
+            } else if (animal.isReptile() && typeOfAnimal.equals("Reptile")) {
+                categorizedArrayList.add(animal);
+            } else if (animal.isAmphibian() && typeOfAnimal.equals("Amphibian")) {
+                categorizedArrayList.add(animal);
             }
         }
-        //todo sort categorized list         pairs.sort(Comparator.comparing(AnimalDateTimePair::getFeedingDateTime));
-        displayAnimals(categorizedyArrayList);
+        displayAnimals(categorizedArrayList, "By category:");
     }
 
-    private static int parseIntegerInput(Scanner scanner) {
+    // Generic function for parsing integers provided by users
+    private int parseIntegerInput(Scanner scanner) {
         int choice;
+
         try {
             choice = scanner.nextInt();
         } catch (InputMismatchException e) {
             choice = 0; // Automatically goes to default error message
         }
+
         scanner.nextLine(); // consume newline
         return choice;
     }
 
-    private static void performConcert() {
+    // Method for text representation of random animal sounds
+    private void performConcert() {
         Collections.shuffle(animals); // Randomize the order of animals
 
         for (Animal animal : animals) {

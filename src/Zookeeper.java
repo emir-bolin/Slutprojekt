@@ -1,15 +1,11 @@
-public class Zookeeper {
+// Subclass of User
+public class Zookeeper extends User {
+    // Attributes
     private String name;
     private String password;
 
+    // Constructor
     public Zookeeper(String name, String password) {
-        this.name = name;
-        this.password = password;
-    }
-    public String getName() {
-        return name;
-    }
-    public boolean checkPassword(String password) {
-        return this.password.equals(password);
+        super(name, password);
     }
 }

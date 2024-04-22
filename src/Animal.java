@@ -1,3 +1,4 @@
+// Superclass which represents an animal
 public abstract class Animal {
     // Attributes
     private String name;
@@ -8,7 +9,7 @@ public abstract class Animal {
     private String breathing;
     private boolean canSwim = false;
     private boolean canFly = false;
-    private String feedingtime;
+    private String feedingtime; // Format: "HH:MM"
     private Zookeeper zookeeper;
 
     // Constructor
@@ -53,11 +54,11 @@ public abstract class Animal {
         return breathing;
     }
 
-    public boolean isCanFly() {
+    public boolean canFly() {
         return canFly;
     }
 
-    public boolean isCanSwim() {
+    public boolean canSwim() {
         return canSwim;
     }
 
@@ -81,9 +82,9 @@ public abstract class Animal {
         return false;
     }
 
-    // Implement in every subclass
     public abstract String getBloodType();
 
+    // Gets the zookeeper that is assigned to the animal
     public Zookeeper getZookeeper() {
         return zookeeper;
     }

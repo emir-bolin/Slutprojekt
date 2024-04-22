@@ -1,15 +1,16 @@
-public class Admin {
+// Subclass of User
+public class Admin extends User {
+    // Attributes
     private String name;
     private String password;
 
+    // Constructor
     public Admin(String name, String password) {
-        this.name = name;
-        this.password = password;
+        super(name, password);
     }
-    public String getName() {
-        return name;
-    }
-    public boolean checkPassword(String password) {
-        return this.password.equals(password);
+
+    // Getters
+    public Boolean isAdmin() {
+        return true;
     }
 }
