@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40af0729-231b-46d0-8bbf-502cfbcf140c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Amphibian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Amphibian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AnimalDateTimePair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnimalDateTimePair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AnimalLexiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnimalLexiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Coldblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Coldblooded.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mammal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mammal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reptile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reptile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warmblooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warmblooded.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zookeeper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zookeeper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +75,7 @@
       <workItem from="1710577770483" duration="43751000" />
       <workItem from="1712071059444" duration="35536000" />
       <workItem from="1712664181308" duration="43354000" />
-      <workItem from="1713791983674" duration="3251000" />
+      <workItem from="1713791983674" duration="3665000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -202,7 +189,14 @@
       <option name="presentableId" value="LOCAL−00016" />
       <updated>1713721692755</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL−00017" summary="Final commit. Comments were added throughout the whole project. New User class was created so that Admin and Zookeeper can inherit their attributes and share methods and functions.">
+      <option name="closed" value="true" />
+      <created>1713799513099</created>
+      <option name="number" value="LOCAL−00017" />
+      <option name="presentableId" value="LOCAL−00017" />
+      <updated>1713799513099</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +219,8 @@
     <MESSAGE value="FindNameOrpassword method was changed so that both admins and zookeepers can use the method. Additionally, an admin menu was created." />
     <MESSAGE value="AdminMenu2 was created for choosing a zookeeper to change attribute to.AdminMenu3 was added to hcange the attribute of the zookeeper" />
     <MESSAGE value="GetAnimalByName function was created. Admin is now able to change feeding time for animals thanks to the new functions . SelectAnimalByFeedingtime and selectFeedingtime." />
-    <option name="LAST_COMMIT_MESSAGE" value="GetAnimalByName function was created. Admin is now able to change feeding time for animals thanks to the new functions . SelectAnimalByFeedingtime and selectFeedingtime." />
+    <MESSAGE value="Final commit. Comments were added throughout the whole project. New User class was created so that Admin and Zookeeper can inherit their attributes and share methods and functions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Final commit. Comments were added throughout the whole project. New User class was created so that Admin and Zookeeper can inherit their attributes and share methods and functions." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
