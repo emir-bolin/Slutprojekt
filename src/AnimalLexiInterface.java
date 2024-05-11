@@ -295,9 +295,9 @@ public class AnimalLexiInterface {
 
         loggedInZookeeper = getUserByName(selectedZookeeper); // Admin "logs in" as zookeeper
         if (loggedInZookeeper == null) { // Could not find zookeeper
-            adminSubMenu();
+            adminSubMenu(); // Recursive call
         } else {
-            selectAnimal().setFeedingtime(getNewFeedingtime(scanner)); // Changes an animals feeding time
+            selectAnimal().setFeedingtime(getNewFeedingtime()); // Changes an animals feeding time
             showSchedule();
         }
     }
@@ -313,15 +313,16 @@ public class AnimalLexiInterface {
         Animal selectedAnimal = getAnimalByName(animalName);
 
         if (selectedAnimal == null) {
-            selectAnimal(); // Recursive call if animal is not found
+            return selectAnimal(); // Recursive call if animal is not found
         }
         return selectedAnimal;
     }
 
     // Functions that returns time in string format "HH:MM"
-    private String getNewFeedingtime(Scanner scanner) {
+    private String getNewFeedingtime() {
         String hourString;
         String minuteString;
+        Scanner scanner = new Scanner(System.in);
 
         try {
             // Validates feeding time in hours
@@ -330,7 +331,7 @@ public class AnimalLexiInterface {
             hourString = verifyHourOrMinute(hour, true);
             if (hourString == null) {
                 System.out.println("Invalid input for hour.");
-                return getNewFeedingtime(scanner); // Recursive call if wrong input for hour
+                return getNewFeedingtime(); // Recursive call if wrong input for hour
             }
 
             // Validates feeding time in minutes
@@ -339,11 +340,11 @@ public class AnimalLexiInterface {
             minuteString = verifyHourOrMinute(minute, false);
             if (minuteString == null) {
                 System.out.println("Invalid input for minute.");
-                return getNewFeedingtime(scanner); // Recursive call if wrong input for minute
+                return getNewFeedingtime(); // Recursive call if wrong input for minute
             }
         } catch (InputMismatchException e) {
             System.out.println("Only numbers are allowed.");
-            return getNewFeedingtime(scanner); // Recursive call if not numbers are provided
+            return getNewFeedingtime(); // Recursive call if not numbers are provided
         }
         return hourString + ":" + minuteString;
     }
